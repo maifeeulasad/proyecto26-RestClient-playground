@@ -15,7 +15,7 @@ public class Obj
 }
 public class MainScript : MonoBehaviour {
 
-	private readonly string basePath = "https://jsonplaceholder.typicode.com";
+	private readonly string basePath = "http://localhost:6969";
 	private RequestHelper currentRequest;
 
 	private void LogMessage(string title, string message) {
@@ -28,7 +28,10 @@ public class MainScript : MonoBehaviour {
 
 	public void GetPrimitive(){
 		RestClient.Get<int>(basePath + "/get-p").Then(res => {
-			this.LogMessage("get-primitive", res.ToString());
+			this.LogMessage("get-primitive1", res.ToString());
+		});
+		RestClient.Get(basePath + "/get-p").Then(res => {
+			this.LogMessage("get-primitive2", res.ToString());
 		});
 	}
 
